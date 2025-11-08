@@ -177,8 +177,11 @@ export default function Layout({ children, title, user }: LayoutProps) {
           </div>
           {/* Body Content */}
           <div>{children}</div>
+              {/* Footer */}
+              <div>
 
-          
+              </div>
+
         </div>
       </div>
     </div>
