@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import { useState } from "react";
-import Logo from "../assets/logo.png";
+import Logo from "../../assets/logo.png";
 import {
   LayoutGrid,
   MailOpen,
@@ -14,12 +14,13 @@ import {
   Search,
 } from "lucide-react";
 import { Link, Route } from "react-router";
-import Dashboard from "../Pages/Dashboard";
+import Searchbar from "./Searchbar";
+
 
 type LayoutProps = {
   children: ReactNode;
   title: string;
-  user:string;
+  user: string;
 };
 
 export default function Layout({ children, title, user }: LayoutProps) {
@@ -107,7 +108,9 @@ export default function Layout({ children, title, user }: LayoutProps) {
                 <div className="absolute w-30 h-30 bg-pink-300 rounded-full lg:-top-15 lg:left-12 "></div>
                 <div className="w-full grid gap-1 mt-10">
                   <div>
-                    <h1 className="text-xl text-black lg:mb-2">Upgrade to Pro</h1>
+                    <h1 className="text-xl text-black lg:mb-2">
+                      Upgrade to Pro
+                    </h1>
                     <p className="text-[11px]">
                       Unlock Premium features & <br />
                       enchance your LMS experience!
@@ -140,20 +143,21 @@ export default function Layout({ children, title, user }: LayoutProps) {
           {/* Navigationa Bar */}
           <div className=" text-gray-400 flex items-center mt-2">
             {/* UserInform */}
-            <div >
+            <div>
               <h1 className="text-2xl text-black/90">{title}</h1>
-              <p className={`${title!=="Dashboard"?"hidden":""}`}>Hello {user}, welcome back!</p>
-              <p className={`${title=="Dashboard"?"hidden":""}`}><span>Dashboard</span> / {title}</p>
+              <p className={`${title !== "Dashboard" ? "hidden" : ""}`}>
+                Hello {user}, welcome back!
+              </p>
+              <p className={`${title == "Dashboard" ? "hidden" : ""}`}>
+                <span>Dashboard</span> / {title}
+              </p>
             </div>
             {/* Search bar */}
-            <div className="flex bg-white items-center relative w-70 h-12 rounded-[10px] pl-4">
-              <input type="search" name="search" id="search" placeholder="Search everything" className="flex w-full h-full outline-none" />
-              <Search className="absolute right-0 mr-4 text-black/70" size={20}/>
+            <div>
+              <Searchbar/>
             </div>
             {/* Profile bar */}
-            <div>
-
-            </div>
+            <div></div>
           </div>
           {/* Body Content */}
           <div>{children}</div>
