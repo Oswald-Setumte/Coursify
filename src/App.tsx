@@ -5,11 +5,12 @@ import Dashboard from './Pages/Dashboard'
 
 
 function App() {
+  const [user, setUser]= useState('Philips')
   return (
     <BrowserRouter>
       <Routes>
         <Route path='/' element={
-          <Layout title="Dashboard">
+          <Layout title="Dashboard " user={user}>
             <Dashboard/>
         </Layout>}/>
       </Routes>

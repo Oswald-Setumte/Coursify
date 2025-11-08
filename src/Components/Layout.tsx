@@ -17,9 +17,10 @@ import { Link, Route } from "react-router";
 type LayoutProps = {
   children: ReactNode;
   title: string;
+  user:string;
 };
 
-export default function Layout({ children, title }: LayoutProps) {
+export default function Layout({ children, title, user }: LayoutProps) {
   const Routes = [
     {
       id: 1,
@@ -74,7 +75,7 @@ export default function Layout({ children, title }: LayoutProps) {
   return (
     <div>
       {/* Body of the LayOut*/}
-      <div className="flex justify-center h-screen gap-4 bg-blue-200/30">
+      <div className="flex font-medium justify-center h-screen gap-4 bg-blue-200/30">
         {/* SideBard */}
         <div className="bg-white flex flex-col items-center lg:w-[250px]">
           {/* Logo */}
@@ -135,10 +136,13 @@ export default function Layout({ children, title }: LayoutProps) {
         {/* Main Content */}
         <div className="flex-1 border">
           {/* Navigationa Bar */}
-          <div>
+          <div className=" text-gray-400">
+            <div >
+              <h1 className="text-2xl text-black/90">{title}</h1>
+              <p>Hello {user}, welcome back!</p>
+            </div>
             <div>
-              <h1>{title}</h1>
-              <p></p>
+                
             </div>
           </div>
           {/* Body Content */}
