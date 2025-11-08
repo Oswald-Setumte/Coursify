@@ -15,6 +15,8 @@ import {
 } from "lucide-react";
 import { Link, Route } from "react-router";
 import Searchbar from "./Searchbar";
+import Profile from "./Profile";
+import Notification from "./Notification";
 
 
 type LayoutProps = {
@@ -141,7 +143,7 @@ export default function Layout({ children, title, user }: LayoutProps) {
         {/* Main Content */}
         <div className="flex-1 border h-screen">
           {/* Navigationa Bar */}
-          <div className=" text-gray-400 flex items-center mt-2">
+          <div className=" text-gray-400 flex items-center mt-2 border">
             {/* UserInform */}
             <div>
               <h1 className="text-2xl text-black/90">{title}</h1>
@@ -157,7 +159,13 @@ export default function Layout({ children, title, user }: LayoutProps) {
               <Searchbar/>
             </div>
             {/* Profile bar */}
-            <div></div>
+            <div>
+              <Profile/>
+            </div>
+            {/* Notificaition */}
+            <div>
+              <Notification/>
+            </div>
           </div>
           {/* Body Content */}
           <div>{children}</div>
