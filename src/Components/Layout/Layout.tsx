@@ -13,6 +13,11 @@ import {
   LogOut,
   Search,
   Menu,
+  Facebook,
+  Twitter,
+  Instagram,
+  Youtube,
+  Linkedin,
 } from "lucide-react";
 import { Link, Route } from "react-router";
 import Searchbar from "./Searchbar";
@@ -41,40 +46,84 @@ export default function Layout({ children, title, user }: LayoutProps) {
       to: "/Messages",
     },
     {
-      id: 2,
+      id: 3,
       route: "Calendar",
       icon: <CalendarDays size={20} />,
       to: "/Calendar",
     },
     {
-      id: 2,
+      id: 4,
       route: "Enrollments",
       icon: <SquareCheck size={20} />,
       to: "/Enrollements",
     },
     {
-      id: 2,
+      id: 5,
       route: "Courses",
       icon: <CirclePlay size={20} />,
       to: "/Courser",
     },
     {
-      id: 2,
+      id: 6,
       route: "Instructors",
       icon: <SquareUserRound size={20} />,
       to: "/Instructors",
     },
     {
-      id: 2,
+      id: 7,
       route: "Students",
       icon: <GraduationCap size={20} />,
       to: "/Students",
     },
     {
-      id: 2,
+      id: 8,
       route: "Financials",
       icon: <CircleDollarSign size={20} />,
       to: "/Messages",
+    },
+  ];
+  const Conditions = [
+    {
+      id: 1,
+      text: "Privacy Policy",
+      to: "",
+    },
+    {
+      id: 2,
+      text: "Term and conditions",
+      to: "",
+    },
+    {
+      id: 3,
+      text: "Contact",
+      to: "",
+    },
+  ];
+  const socials = [
+    {
+      id: 1,
+      icon: <Facebook size={20} />,
+      to: "",
+    },
+    {
+      id: 2,
+      icon: <Twitter size={20} />,
+      to: "",
+    },
+    {
+      id: 3,
+      icon: <Instagram size={20} />,
+      to: "",
+    },
+    {
+      id: 4,
+      icon: <Youtube size={20} />,
+      to: "",
+    },
+    {
+      id: 5,
+      icon: <Linkedin size={20} />,
+      to: "",
     },
   ];
 
@@ -124,7 +173,7 @@ export default function Layout({ children, title, user }: LayoutProps) {
                     <div className="mt-4 rounded-[10px] bg-white lg:h-12 flex items-center justify-center">
                       <p>Upgrade Now</p>
                     </div>
-                  </Link> 
+                  </Link>
                 </div>
               </div>
 
@@ -144,18 +193,26 @@ export default function Layout({ children, title, user }: LayoutProps) {
         {/* Main Content */}
         <div className="flex-1 border h-screen ">
           {/* Navigationa Bar */}
-          <div className=" text-gray-400 flex items-center md:justify-between justify-around pt-5 pr-4">
+          <div className=" text-gray-400 flex items-center md:justify-between justify-around pt-5 pr-4 z-9999 w-full">
             {/* UserInform */}
             <div>
               <h1 className="lg:text-2xl md:text-xl text-black/90">{title}</h1>
-              <p className={`${title == "Dashboard" ? "hidden md:block" : ""} md:text-[12px] lg:text-[16px]  `}>
+              <p
+                className={`${
+                  title == "Dashboard" ? "hidden md:block" : ""
+                } md:text-[12px] lg:text-[16px]  `}
+              >
                 Hello {user}, welcome back!
               </p>
-              <p className={`${title != "Dashboard" ? "" : "hidden"}  md:text-[12px] lg:text-[16px]` }>
+              <p
+                className={`${
+                  title != "Dashboard" ? "" : "hidden"
+                }  md:text-[12px] lg:text-[16px]`}
+              >
                 <span className="text-pink-300">Dashboard</span> / {title}
               </p>
             </div>
-            <Menu className="md:hidden" size={20}/>
+            <Menu className="md:hidden" size={20} />
             <div className="gap-3 items-center hidden md:flex">
               {/* Search bar */}
               <div>
@@ -175,13 +232,40 @@ export default function Layout({ children, title, user }: LayoutProps) {
               </div>
             </div>
           </div>
+
           {/* Body Content */}
-          <div>{children}</div>
-              {/* Footer */}
-              <div>
+          <div  className="">{children}</div>
 
+          {/* Footer */}
+          <div className="text-[12px] md:flex justify-between items-center pr-4 block">
+            {/* Copyright */}
+            <div>
+              <div className="md:flex gap-4 text-gray-400 text-center mb-2  md:mb-0 md:text-sm">
+                <p className="mb-2 md:mb-0 text-black/70 ">
+                  Copyright {"\u00A9"} 2025 Petedraw
+                </p>
+                <div className="flex justify-center gap-5 items-center text-[9px] md:text-sm">
+                  {Conditions.map((each) => {
+                    return (
+                      <Link to={each.to} key={each.id}>
+                        <p>{each.text}</p>
+                      </Link>
+                    );
+                  })}
+                </div>
               </div>
-
+            </div>
+            {/* social Media handle */}
+            <div className="flex gap-3 justify-center text-gray-400">
+              {socials.map((each) => {
+                return (
+                  <Link to={each.to} key={each.id}>
+                    <p>{each.icon}</p>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </div>
     </div>
