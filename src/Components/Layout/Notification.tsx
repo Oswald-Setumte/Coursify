@@ -5,7 +5,7 @@ export default function Notification() {
   return (
     <div>
       <div
-        className="h-12 flex items-center w-12 justify-center bg-white rounded-xl"
+        className="h-12 flex items-center w-12 justify-center bg-white rounded-xl text-black/70"
         onClick={() => {}}
       >
         <div className="relative">
