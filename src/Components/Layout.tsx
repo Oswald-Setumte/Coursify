@@ -11,8 +11,10 @@ import {
   GraduationCap,
   CircleDollarSign,
   LogOut,
+  Search,
 } from "lucide-react";
 import { Link, Route } from "react-router";
+import Dashboard from "../Pages/Dashboard";
 
 type LayoutProps = {
   children: ReactNode;
@@ -73,7 +75,7 @@ export default function Layout({ children, title, user }: LayoutProps) {
   ];
 
   return (
-    <div>
+    <div className="h-screen">
       {/* Body of the LayOut*/}
       <div className="flex font-medium justify-center h-screen gap-4 bg-blue-200/30">
         {/* SideBard */}
@@ -134,15 +136,23 @@ export default function Layout({ children, title, user }: LayoutProps) {
         </div>
 
         {/* Main Content */}
-        <div className="flex-1 border">
+        <div className="flex-1 border h-screen">
           {/* Navigationa Bar */}
-          <div className=" text-gray-400">
+          <div className=" text-gray-400 flex items-center mt-2">
+            {/* UserInform */}
             <div >
               <h1 className="text-2xl text-black/90">{title}</h1>
-              <p>Hello {user}, welcome back!</p>
+              <p className={`${title!=="Dashboard"?"hidden":""}`}>Hello {user}, welcome back!</p>
+              <p className={`${title=="Dashboard"?"hidden":""}`}><span>Dashboard</span> / {title}</p>
             </div>
+            {/* Search bar */}
+            <div className="flex bg-white items-center relative w-70 h-12 rounded-[10px] pl-4">
+              <input type="search" name="search" id="search" placeholder="Search everything" className="flex w-full h-full outline-none" />
+              <Search className="absolute right-0 mr-4 text-black/70" size={20}/>
+            </div>
+            {/* Profile bar */}
             <div>
-                
+
             </div>
           </div>
           {/* Body Content */}
