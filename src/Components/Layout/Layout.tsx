@@ -146,7 +146,7 @@ export default function Layout({ children, title, user }: LayoutProps) {
               {Routes.map((each) => {
                 return (
                   <div key={each.id}>
-                    <div className="flex items-center lg:pl-4 pl-2.5 rounded-[10px] hover:bg-pink-400/20 hover:text-black h-10 gap-2">
+                    <div className="flex items-center lg:pl-4 pl-2.5 rounded-[10px] hover:bg-pink-400/20 hover:text-black h-10 gap-2 cursor-pointer">
                       <div className=" ">{each.icon}</div>
                       <div className="lg:block hidden">{each.route}</div>
                     </div>
@@ -196,7 +196,7 @@ export default function Layout({ children, title, user }: LayoutProps) {
           <div className=" text-gray-400 flex items-center md:justify-between justify-around pt-5 pr-4 z-9999 w-full">
             {/* UserInform */}
             <div>
-              <h1 className="lg:text-2xl md:text-xl text-black/90">{title}</h1>
+              <h1 className="md:text-2xl text-black/90">{title}</h1>
               <p
                 className={`${
                   title == "Dashboard" ? "hidden md:block" : ""
