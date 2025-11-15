@@ -12,18 +12,18 @@ import {
 
 export default function Revenue() {
   const [data, setData] = useState([
-    { month: "Jan", income: 6500, expense: 4000 },
-    { month: "Feb", income: 7000, expense: 4300 },
-    { month: "Mar", income: 6400, expense: 3800 },
-    { month: "Apr", income: 10548, expense: 5100 },
-    { month: "May", income: 8000, expense: 4700 },
-    { month: "Jun", income: 9000, expense: 5200 },
-    { month: "Jul", income: 7200, expense: 4900 },
-    { month: "Aug", income: 9000, expense: 2324 },
-    { month: "Sep", income: 8200, expense: 134 },
-    { month: "Oct", income: 7600, expense: 1132 },
-    { month: "Nov", income: 7400, expense: 1332 },
-    { month: "Dec", income: 7300, expense: 2354 },
+    { Month: "Jan", Income: 6500, Expense: 4000 },
+    { Month: "Feb", Income: 7000, Expense: 4300 },
+    { Month: "Mar", Income: 6400, Expense: 3800 },
+    { Month: "Apr", Income: 10548,Expense: 5100 },
+    { Month: "May", Income: 8000, Expense: 4700 },
+    { Month: "Jun", Income: 9000, Expense: 5200 },
+    { Month: "Jul", Income: 7200, Expense: 4900 },
+    { Month: "Aug", Income: 9000, Expense: 2324 },
+    { Month: "Sep", Income: 8200, Expense: 134 },
+    { Month: "Oct", Income: 7600, Expense: 1132 },
+    { Month: "Nov", Income: 7400, Expense: 1332 },
+    { Month: "Dec", Income: 7300, Expense: 2354 },
   ]);
   return (
     <div className="bg-white h-[300px] rounded-2xl p-4">
@@ -53,7 +53,7 @@ export default function Revenue() {
             <LineChart data={data}>
               <CartesianGrid strokeDasharray={2} vertical={false} />
               <XAxis
-                dataKey={"month"}
+                dataKey={"Month"}
                 tick={{
                   fontSize: 10,
                   fontFamily: "Inter",
@@ -61,7 +61,7 @@ export default function Revenue() {
                 axisLine={false}
               />
               <YAxis
-                dataKey={"income"}
+                dataKey={"Income"}
                 tick={{
                   fontSize: 10,
                   fontFamily: "Inter",
@@ -71,8 +71,8 @@ export default function Revenue() {
 
               <Tooltip />
 
-              <Line dataKey={"income"} stroke="pink" />
-              <Line dataKey={"expense"} stroke="black" />
+              <Line type={"natural"} dataKey={"Income"} stroke="pink" />
+              <Line type={"natural"} dataKey={"Expense"} stroke="black" />
             </LineChart>
           </ResponsiveContainer>
         </div>

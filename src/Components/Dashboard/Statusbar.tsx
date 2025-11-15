@@ -32,7 +32,7 @@ export default function Statusbar() {
         {
           stat.map((each)=>{
             return(
-              <div key={each.id} className={`flex items-center gap-3 p-3 border ${each.bg} relative w-[20vw] rounded-2xl`}>
+              <div key={each.id} className={`flex items-center gap-3 p-3 ${each.bg} relative w-[20vw] rounded-2xl`}>
                 <div className='w-15 h-15 flex justify-center items-center rounded-xl bg-white'>{each.icon}</div>
                 <div className='grid gap-1'> 
                   <p className='text-[12px]'>{each.title}</p>

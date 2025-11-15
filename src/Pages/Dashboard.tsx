@@ -7,9 +7,9 @@ export default function Dashboard() {
   return (
     <div className="flex gap-3">
       {/* main */}
-      <div className="border">
+      <div className="border grid gap-3">
         {/* Status bars */}
-        <div>
+        <div className="mt-3">
           <Statusbar />
         </div>
         {/* Second Friend */}

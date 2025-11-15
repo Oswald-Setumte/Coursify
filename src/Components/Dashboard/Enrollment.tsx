@@ -14,18 +14,18 @@ import {
 
 export default function Enrollment() {
   const [data, setData] = useState([
-    { month: "Jan", students: 6500, fees: 4000 },
-    { month: "Feb", students: 7000, fees: 4300 },
-    { month: "Mar", students: 6400, fees: 3800 },
-    { month: "Apr", students: 10548, fees: 5100 },
-    { month: "May", students: 8000, fees: 4700 },
-    { month: "Jun", students: 9000, fees: 5200 },
-    { month: "Jul", students: 7200, fees: 4900 },
-    { month: "Aug", students: 9000, fees: 2324 },
-    { month: "Sep", students: 8200, fees: 1334 },
-    { month: "Oct", students: 7600, fees: 1132 },
-    { month: "Nov", students: 7400, fees: 1332 },
-    { month: "Dec", students: 7300, fees: 3354 },
+    { Month: "Jan", Students: 6500, Fees: 4000 },
+    { Month: "Feb", Students: 7000, Fees: 4300 },
+    { Month: "Mar", Students: 6400, Fees: 3800 },
+    { Month: "Apr", Students: 10548,Fees: 5100 },
+    { Month: "May", Students: 8000, Fees: 4700 },
+    { Month: "Jun", Students: 9000, Fees: 5200 },
+    { Month: "Jul", Students: 7200, Fees: 4900 },
+    { Month: "Aug", Students: 9000, Fees: 2324 },
+    { Month: "Sep", Students: 8200, Fees: 1334 },
+    { Month: "Oct", Students: 7600, Fees: 1132 },
+    { Month: "Nov", Students: 7400, Fees: 1332 },
+    { Month: "Dec", Students: 7300, Fees: 3354 },
   ]);
 
   return (
@@ -56,7 +56,7 @@ export default function Enrollment() {
             <BarChart data={data} barGap={8}>
               <CartesianGrid strokeDasharray={2} vertical={false} />
               <XAxis
-                dataKey={"month"}
+                dataKey={"Month"}
                 tick={{
                   fontSize: 10,
                   fontFamily: "Inter",
@@ -64,7 +64,7 @@ export default function Enrollment() {
                 axisLine={false}
               />
               <YAxis
-                dataKey={"students"}
+                dataKey={"Students"}
                 tick={{
                   fontSize: 10,
                   fontFamily: "Inter",
@@ -74,8 +74,8 @@ export default function Enrollment() {
 
               <Tooltip />
 
-              <Line dataKey={"fees"}  stroke=""/>
-              <Bar dataKey={"students"} fill="pink" radius={[5,5,5,5]} barSize={20}/>
+              <Line dataKey={"Fees"}  stroke=""/>
+              <Bar dataKey={"Students"} fill="pink" radius={[5,5,5,5]} barSize={20}/>
             </BarChart>
           </ResponsiveContainer>
         </div>
