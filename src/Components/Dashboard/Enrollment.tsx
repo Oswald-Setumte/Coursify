@@ -1,7 +1,6 @@
-import { ChevronDown } from "lucide-react";
+
 import React, { useState } from "react";
 import {
-  LineChart,
   Line,
   XAxis,
   YAxis,
@@ -11,13 +10,14 @@ import {
   BarChart,
   Bar,
 } from "recharts";
+import LastDays from "./LastDays";
 
 export default function Enrollment() {
   const [data, setData] = useState([
     { Month: "Jan", Students: 6500, Fees: 4000 },
     { Month: "Feb", Students: 7000, Fees: 4300 },
     { Month: "Mar", Students: 6400, Fees: 3800 },
-    { Month: "Apr", Students: 10548,Fees: 5100 },
+    { Month: "Apr", Students: 10548, Fees: 5100 },
     { Month: "May", Students: 8000, Fees: 4700 },
     { Month: "Jun", Students: 9000, Fees: 5200 },
     { Month: "Jul", Students: 7200, Fees: 4900 },
@@ -32,12 +32,9 @@ export default function Enrollment() {
     <div className="bg-white h-[300px] rounded-2xl p-4">
       <div className="flex justify-between">
         <h1>Enrollment Trends</h1>
-        <p className="flex items-center text-gray-400 text-[11px] gap-1">
-          Last 7 Months{" "}
-          <span>
-            <ChevronDown className="w-[11px]" />
-          </span>
-        </p>
+        <div>
+          <LastDays />
+        </div>
       </div>
       <div>
         {/* Legend */}
@@ -74,8 +71,13 @@ export default function Enrollment() {
 
               <Tooltip />
 
-              <Line dataKey={"Fees"}  stroke=""/>
-              <Bar dataKey={"Students"} fill="pink" radius={[5,5,5,5]} barSize={20}/>
+              <Line dataKey={"Fees"} stroke="" />
+              <Bar
+                dataKey={"Students"}
+                fill="pink"
+                radius={[5, 5, 5, 5]}
+                barSize={20}
+              />
             </BarChart>
           </ResponsiveContainer>
         </div>

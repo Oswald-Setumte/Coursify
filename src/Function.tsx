@@ -1,21 +1,7 @@
+import { useState } from "react";
 
+export function Toggle() {
+  const [drop, setDrop] = useState(false);
 
-export function Function() {
-  return (
-    <div>Function</div>
-  )
-}
-
-export  function exp() {
-  return (
-    <div>Function</div>
-  )
-}
-
-
-
-export function handle() {
-  return (
-    <div>Function</div>
-  )
+  return { drop, setDrop };
 }

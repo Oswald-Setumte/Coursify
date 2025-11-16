@@ -1,4 +1,3 @@
-import { ChevronDown } from "lucide-react";
 import React, { useState } from "react";
 import {
   LineChart,
@@ -9,6 +8,7 @@ import {
   ResponsiveContainer,
   CartesianGrid,
 } from "recharts";
+import LastDays from "./LastDays";
 
 export default function Revenue() {
   const [data, setData] = useState([
@@ -29,12 +29,9 @@ export default function Revenue() {
     <div className="bg-white h-[300px] rounded-2xl p-4">
       <div className="flex justify-between">
         <h1>Revenue</h1>
-        <p className="flex items-center text-gray-400 text-[11px] gap-1">
-          Last 7 Months{" "}
-          <span>
-            <ChevronDown className="w-[11px]" />
-          </span>
-        </p>
+       <div>
+          <LastDays/>
+       </div>
       </div>
       <div>
         {/* Legend */}
