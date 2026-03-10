@@ -23,3 +23,6 @@ const StatsCard = ({ title = 'All Schedules', number = 0, color = '' }) => {
 };
 
 export default StatsCard;
+
+
+// npm install @fullcalendar/react @fullcalendar/daygrid @fullcalendar/timegrid
