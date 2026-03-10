@@ -18,7 +18,7 @@ function App() {
           }
         />
         <Route
-          path="/calendar"
+          path="/Calendar"
           element={
             <Layout title="Calendar" user={user}>
               <Calendar />

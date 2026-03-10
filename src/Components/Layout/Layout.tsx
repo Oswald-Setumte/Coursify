@@ -148,7 +148,9 @@ export default function Layout({ children, title, user }: LayoutProps) {
                   <div key={each.id}>
                     <div className="flex items-center lg:pl-4 pl-2.5 rounded-[10px] hover:bg-pink-400/20 hover:text-black h-10 gap-2 cursor-pointer">
                       <div className=" ">{each.icon}</div>
-                      <div className="lg:block hidden">{each.route}</div>
+                      <Link to={each.to} className="lg:block hidden">
+                        {each.route}
+                      </Link>
                     </div>
                   </div>
                 );
@@ -234,7 +236,7 @@ export default function Layout({ children, title, user }: LayoutProps) {
           </div>
 
           {/* Body Content */}
-          <div  className="">{children}</div>
+          <div className="">{children}</div>
 
           {/* Footer */}
           <div className="text-[12px] md:flex justify-between items-center pr-4 block">
