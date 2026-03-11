@@ -128,64 +128,66 @@ export default function Layout({ children, title, user }: LayoutProps) {
   ];
 
   return (
-    <div className="h-screen">
+    <div className="">
       {/* Body of the LayOut*/}
-      <div className="flex font-medium justify-center gap-4 h-screen bg-blue-200/30">
+      <div className="flex font-medium justify-center gap-4 bg-blue-200/30 ">
         {/* SideBard */}
-        <div className="bg-white flex flex-col items-center lg:w-[250px] w-18">
-          {/* Logo */}
-          <div className="flex items-center gap-2 p-4 w-full">
-            <div>
-              <img src={Logo} alt="Logo" className="w-10" />
-            </div>
-            <p className="font-bold text-2xl lg:block hidden">Coursify</p>
-          </div>
-          {/* Routes */}
-          <div className="w-full h-full flex flex-col  ">
-            <div className=" flex  flex-2 flex-col  p-4 gap-1 text-gray-500 font-medium">
-              {Routes.map((each) => {
-                return (
-                  <div key={each.id}>
-                    <div className="flex items-center lg:pl-4 pl-2.5 rounded-[10px] hover:bg-pink-400/20 hover:text-black h-10 gap-2 cursor-pointer">
-                      <div className=" ">{each.icon}</div>
-                      <Link to={each.to} className="lg:block hidden">
-                        {each.route}
-                      </Link>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-            {/* Ads */}
-            <div className="w-full grid gap-4 font-medium text-gray-500/90 p-4 ">
-              <div className="relative bg-amber-500/50 lg:h-[200px] text-center p-4 rounded-[10px] lg:flex items-center hidden  ">
-                <div className="absolute w-30 h-30 bg-pink-300 rounded-full lg:-top-15 lg:left-12 "></div>
-                <div className="w-full grid gap-1 mt-10">
-                  <div>
-                    <h1 className="text-xl text-black lg:mb-2">
-                      Upgrade to Pro
-                    </h1>
-                    <p className="text-[11px]">
-                      Unlock Premium features & <br />
-                      enchance your LMS experience!
-                    </p>
-                  </div>
-
-                  <Link to="">
-                    <div className="mt-4 rounded-[10px] bg-white lg:h-12 flex items-center justify-center">
-                      <p>Upgrade Now</p>
-                    </div>
-                  </Link>
-                </div>
+        <div className="bg-white flex flex-col items-center lg:w-62.5 w-18 relative">
+          <div className="fixed">
+            {/* Logo */}
+            <div className="flex items-center gap-2 p-4 w-full">
+              <div>
+                <img src={Logo} alt="Logo" className="w-10" />
               </div>
+              <p className="font-bold text-2xl lg:block hidden">Coursify</p>
+            </div>
+            {/* Routes */}
+            <div className="w-full h-full flex flex-col  ">
+              <div className=" flex  flex-2 flex-col  p-4 gap-1 text-gray-500 font-medium">
+                {Routes.map((each) => {
+                  return (
+                    <div key={each.id}>
+                      <div className="flex items-center lg:pl-4 pl-2.5 rounded-[10px] hover:bg-pink-400/20 hover:text-black h-10 gap-2 cursor-pointer">
+                        <div className=" ">{each.icon}</div>
+                        <Link to={each.to} className="lg:block hidden">
+                          {each.route}
+                        </Link>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+              {/* Ads */}
+              <div className="w-full grid gap-4 font-medium text-gray-500/90 p-4 ">
+                <div className="relative bg-amber-500/50 lg:h-[200px] text-center p-4 rounded-[10px] lg:flex items-center hidden  ">
+                  <div className="absolute w-30 h-30 bg-pink-300 rounded-full lg:-top-15 lg:left-12 "></div>
+                  <div className="w-full grid gap-1 mt-10">
+                    <div>
+                      <h1 className="text-xl text-black lg:mb-2">
+                        Upgrade to Pro
+                      </h1>
+                      <p className="text-[11px]">
+                        Unlock Premium features & <br />
+                        enchance your LMS experience!
+                      </p>
+                    </div>
 
-              {/* SignOut */}
-              <div className="flex items-center  lg:pl-4 pl-2 rounded-[10px] bg-gray-400/20 hover:text-black h-10 gap-2">
-                <div className="">
-                  <LogOut size={20} />
+                    <Link to="">
+                      <div className="mt-4 rounded-[10px] bg-white lg:h-12 flex items-center justify-center">
+                        <p>Upgrade Now</p>
+                      </div>
+                    </Link>
+                  </div>
                 </div>
-                <div className="hidden lg:block">
-                  <p>Sign Out</p>
+
+                {/* SignOut */}
+                <div className="flex items-center  lg:pl-4 pl-2 rounded-[10px] bg-gray-400/20 hover:text-black h-10 gap-2">
+                  <div className="">
+                    <LogOut size={20} />
+                  </div>
+                  <div className="hidden lg:block">
+                    <p>Sign Out</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -193,7 +195,7 @@ export default function Layout({ children, title, user }: LayoutProps) {
         </div>
 
         {/* Main Content */}
-        <div className="flex-1 border h-screen ">
+        <div className="flex-1 px">
           {/* Navigationa Bar */}
           <div className=" text-gray-400 flex items-center md:justify-between justify-around pt-5 pr-4 z-9999 w-full">
             {/* UserInform */}
@@ -236,7 +238,7 @@ export default function Layout({ children, title, user }: LayoutProps) {
           </div>
 
           {/* Body Content */}
-          <div className="">{children}</div>
+          <div className=" mx-auto">{children}</div>
 
           {/* Footer */}
           <div className="text-[12px] md:flex justify-between items-center pr-4 block">

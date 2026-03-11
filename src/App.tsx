@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router";
 import Layout from "./Components/Layout/Layout";
 import Dashboard from "./Pages/Dashboard";
 import Calendar from "./Pages/Calendar";
+import Instructors from "./Pages/Instructors";
 
 function App() {
   const [user, setUser] = useState("Philip");
@@ -10,7 +11,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route
-          path="/"
+          path="/Dashboard"
           element={
             <Layout title="Dashboard" user={user}>
               <Dashboard />
@@ -22,6 +23,14 @@ function App() {
           element={
             <Layout title="Calendar" user={user}>
               <Calendar />
+            </Layout>
+          }
+        />
+        <Route
+          path="/Instructors"
+          element={
+            <Layout title="Instructors" user={user}>
+              <Instructors />
             </Layout>
           }
         />

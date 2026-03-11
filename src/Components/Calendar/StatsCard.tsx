@@ -3,7 +3,7 @@ import MiniChart from "./MiniChart";
 
 const StatsCard = ({ title = 'All Schedules', number = 0, color = '' }) => {
   return (
-    <div className="bg-white rounded-xl shadow">
+    <div className="bg-white rounded-xl shadow max-w-50px">
       <div className={` ${color} py-2 px-4 rounded-t-xl`}>
         <p className="text-gray-500">{title}</p>
       </div>
