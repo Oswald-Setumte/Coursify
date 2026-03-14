@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import {
   LineChart,
   Line,
@@ -15,7 +15,7 @@ export default function Revenue() {
     { Month: "Jan", Income: 6500, Expense: 4000 },
     { Month: "Feb", Income: 7000, Expense: 4300 },
     { Month: "Mar", Income: 6400, Expense: 3800 },
-    { Month: "Apr", Income: 10548,Expense: 5100 },
+    { Month: "Apr", Income: 10548, Expense: 5100 },
     { Month: "May", Income: 8000, Expense: 4700 },
     { Month: "Jun", Income: 9000, Expense: 5200 },
     { Month: "Jul", Income: 7200, Expense: 4900 },
@@ -27,15 +27,15 @@ export default function Revenue() {
   ]);
   return (
     <div className="bg-white h-[300px] rounded-2xl p-4">
-      <div className="flex justify-between">
+      <div className="flex justify-between text-xl font-bold">
         <h1>Revenue</h1>
-       <div>
-          <LastDays/>
-       </div>
+        <div>
+          <LastDays />
+        </div>
       </div>
       <div>
         {/* Legend */}
-        <div className="flex gap-4">
+        <div className="flex gap-4 text-xl">
           <div className="flex items-center gap-1">
             <div className="w-2 h-2 rounded-full bg-pink-300/40"></div>
             <div>Income</div>
