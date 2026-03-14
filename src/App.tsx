@@ -7,6 +7,8 @@ import Instructors from "./Pages/Instructors";
 import InstructorDetails from "./Pages/InstructorDetails";
 import Students from "./Pages/Students";
 import StudentDetail from "./Pages/StudentDetail";
+import Courses from "./Pages/Courses";
+import Messages from "./Pages/Messages";
 
 function App() {
   const [user, setUser] = useState("Philip");
@@ -59,6 +61,22 @@ function App() {
           element={
             <Layout title="Student Detail" user={user}>
               <StudentDetail />
+            </Layout>
+          }
+        />
+        <Route
+          path="/Messages"
+          element={
+            <Layout title="Messages" user={user}>
+              <Messages/>
+            </Layout>
+          }
+        />
+        <Route
+          path="/Courses"
+          element={
+            <Layout title="Courses" user={user}>
+              <Courses />
             </Layout>
           }
         />

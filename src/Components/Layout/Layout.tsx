@@ -60,7 +60,7 @@ export default function Layout({ children, title, user }: LayoutProps) {
       id: 5,
       route: "Courses",
       icon: <CirclePlay size={20} />,
-      to: "/Courser",
+      to: "/Courses",
     },
     {
       id: 6,
