@@ -1,4 +1,5 @@
-import type { ReactNode } from "react";
+import { type ReactNode } from "react";
+
 import Logo from "../../assets/logo.png";
 import {
   LayoutGrid,
@@ -10,7 +11,6 @@ import {
   GraduationCap,
   CircleDollarSign,
   LogOut,
-  Search,
   Menu,
   Facebook,
   Twitter,
@@ -18,11 +18,12 @@ import {
   Youtube,
   Linkedin,
 } from "lucide-react";
-import { Link, Route } from "react-router";
+import { Link } from "react-router";
 import Searchbar from "./Searchbar";
 import Profile from "./Profile";
 import Notification from "./Notification";
 import Setting from "./Setting";
+
 
 type LayoutProps = {
   children: ReactNode;
@@ -36,7 +37,7 @@ export default function Layout({ children, title, user }: LayoutProps) {
       id: 1,
       route: "Dashboard",
       icon: <LayoutGrid size={20} />,
-      to: "/Dashboard",
+      to: "/",
     },
     {
       id: 2,
@@ -54,7 +55,7 @@ export default function Layout({ children, title, user }: LayoutProps) {
       id: 4,
       route: "Enrollments",
       icon: <SquareCheck size={20} />,
-      to: "/Enrollements",
+      to: "/Enrollments",
     },
     {
       id: 5,
@@ -101,27 +102,27 @@ export default function Layout({ children, title, user }: LayoutProps) {
   const socials = [
     {
       id: 1,
-      icon: <Facebook size={20} />,
+      icon: <Facebook size={30} />,
       to: "",
     },
     {
       id: 2,
-      icon: <Twitter size={20} />,
+      icon: <Twitter size={30} />,
       to: "",
     },
     {
       id: 3,
-      icon: <Instagram size={20} />,
+      icon: <Instagram size={30} />,
       to: "",
     },
     {
       id: 4,
-      icon: <Youtube size={20} />,
+      icon: <Youtube size={30} />,
       to: "",
     },
     {
       id: 5,
-      icon: <Linkedin size={20} />,
+      icon: <Linkedin size={30} />,
       to: "",
     },
   ];
@@ -131,14 +132,27 @@ export default function Layout({ children, title, user }: LayoutProps) {
       {/* Body of the LayOut*/}
       <div className="flex font-medium justify-center gap-4 bg-blue-200/30 ">
         {/* SideBard */}
-        <div className="bg-white md:flex flex-col items-center hidden w-62.5 relative">
-          <div className="fixed w-300px">
-            {/* Logo */}
-            <div className="flex items-center gap-2 p-4 w-full">
-              <div>
-                <img src={Logo} alt="Logo" className="w-10" />
-              </div>
-              <p className="font-bold text-2xl lg:block hidden">Coursify</p>
+        <div className="bg-white flex flex-col items-center lg:w-[250px] w-18">
+          {/* Logo */}
+          <div className="flex items-center gap-2 p-4 w-full">
+            <div>
+              <img src={Logo} alt="Logo" className="w-10" />
+            </div>
+            <p className="font-bold text-2xl lg:block hidden">Coursify</p>
+          </div>
+          {/* Routes */}
+          <div className="w-full h-full flex flex-col  ">
+            <div className=" flex  flex-2 flex-col  p-4 gap-1 text-gray-500 font-medium">
+              {Routes.map((each) => {
+                return (
+                  <Link to={each.to} key={each.id}>
+                    <div className="flex items-center lg:pl-4 pl-2.5 rounded-[10px] hover:bg-pink-400/20 hover:text-black h-10 gap-2 cursor-pointer">
+                      <div className=" ">{each.icon}</div>
+                      <div className="lg:block hidden">{each.route}</div>
+                    </div>
+                  </Link>
+                );
+              })}
             </div>
             {/* Routes */}
             <div className="w-full h-full flex flex-col  ">
@@ -194,22 +208,22 @@ export default function Layout({ children, title, user }: LayoutProps) {
         </div>
 
         {/* Main Content */}
-        <div className="flex-1 min-h-screen flex flex-col">
+        <div className="flex-1 border pr-4">
           {/* Navigationa Bar */}
-          <div className="text-gray-400 flex items-center md:justify-between justify-around pt-5 pr-4 z-9999 w-full">
+          <div className=" text-gray-400 flex items-center md:justify-between justify-around z-9999 w-full">
             {/* UserInform */}
-            <div>
+            <div className="space-y-1">
               <h1 className="md:text-2xl text-black/90">{title}</h1>
               <p
                 className={`${
                   title == "Dashboard" ? "hidden md:block" : ""
-                } md:text-[12px] lg:text-[16px]  `}
+                } md:text-[12px] lg:text-[16px]  ${title != "Dashboard" && "hidden"}`}
               >
                 Hello {user}, welcome back!
               </p>
               <p
                 className={`${
-                  title != "Dashboard" ? "" : "hidden"
+                  title != "Dashboard" ? "block" : "hidden"
                 }  md:text-[12px] lg:text-[16px]`}
               >
                 <span className="text-pink-300">Dashboard</span> / {title}
@@ -222,16 +236,20 @@ export default function Layout({ children, title, user }: LayoutProps) {
                 <Searchbar />
               </div>
               {/* Profile bar */}
-              <div>
-                <Profile user={user} />
-              </div>
-              {/* Notificaition */}
-              <div>
-                <Notification />
-              </div>
-              {/* Settings */}
-              <div>
-                <Setting />
+              <div
+                className={` flex gap-3 items-center  ${title == "Dashboard" && "bg-white w-107.5 flex items-center  justify-evenly"}`}
+              >
+                <div>
+                  <Profile user={user} />
+                </div>
+                {/* Notificaition */}
+                <div>
+                  <Notification />
+                </div>
+                {/* Settings */}
+                <div>
+                  <Setting />
+                </div>
               </div>
             </div>
           </div>
@@ -242,14 +260,14 @@ export default function Layout({ children, title, user }: LayoutProps) {
           </div>
 
           {/* Footer */}
-          <div className="text-[12px] md:flex justify-between items-center pr-4 block">
+          <div className="text-xl md:flex justify-between items-center pr-4 block mt-5">
             {/* Copyright */}
             <div>
-              <div className="md:flex gap-4 text-gray-400 text-center mb-2  md:mb-0 md:text-sm">
+              <div className="md:flex gap-4 text-gray-400 text-center mb-2  md:mb-0 md:text-lg">
                 <p className="mb-2 md:mb-0 text-black/70 ">
                   Copyright {"\u00A9"} 2025 Petedraw
                 </p>
-                <div className="flex justify-center gap-5 items-center text-[9px] md:text-sm">
+                <div className="flex justify-center gap-5 items-center text-[9px] md:text-lg">
                   {Conditions.map((each) => {
                     return (
                       <Link to={each.to} key={each.id}>
@@ -261,7 +279,7 @@ export default function Layout({ children, title, user }: LayoutProps) {
               </div>
             </div>
             {/* social Media handle */}
-            <div className="flex gap-3 justify-center text-gray-400">
+            <div className="flex space-x-5 justify-center text-gray-400">
               {socials.map((each) => {
                 return (
                   <Link to={each.to} key={each.id}>
