@@ -61,7 +61,7 @@ export default function Layout({ children, title, user }: LayoutProps) {
       id: 5,
       route: "Courses",
       icon: <CirclePlay size={20} />,
-      to: "/Courser",
+      to: "/Courses",
     },
     {
       id: 6,
@@ -75,12 +75,12 @@ export default function Layout({ children, title, user }: LayoutProps) {
       icon: <GraduationCap size={20} />,
       to: "/Students",
     },
-    {
-      id: 8,
-      route: "Financials",
-      icon: <CircleDollarSign size={20} />,
-      to: "/Messages",
-    },
+    // {
+    //   id: 8,
+    //   route: "Financials",
+    //   icon: <CircleDollarSign size={20} />,
+    //   to: "/Messages",
+    // },
   ];
   const Conditions = [
     {
@@ -130,7 +130,7 @@ export default function Layout({ children, title, user }: LayoutProps) {
   return (
     <div className="h-screen">
       {/* Body of the LayOut*/}
-      <div className="flex font-medium justify-center gap-4 h-screen bg-blue-200/30">
+      <div className="flex font-medium justify-center gap-4 bg-blue-200/30 ">
         {/* SideBard */}
         <div className="bg-white flex flex-col items-center lg:w-[250px] w-18">
           {/* Logo */}
@@ -154,36 +154,53 @@ export default function Layout({ children, title, user }: LayoutProps) {
                 );
               })}
             </div>
-            {/* Ads */}
-            <div className="w-full grid gap-4 font-medium text-gray-500/90 p-4 ">
-              <div className="relative bg-amber-500/50 lg:h-[200px] text-center p-4 rounded-[10px] lg:flex items-center hidden  ">
-                <div className="absolute w-30 h-30 bg-pink-300 rounded-full lg:-top-15 lg:left-12 "></div>
-                <div className="w-full grid gap-1 mt-10">
-                  <div>
-                    <h1 className="text-xl text-black lg:mb-2">
-                      Upgrade to Pro
-                    </h1>
-                    <p className="text-[11px]">
-                      Unlock Premium features & <br />
-                      enchance your LMS experience!
-                    </p>
-                  </div>
-
-                  <Link to="">
-                    <div className="mt-4 rounded-[10px] bg-white lg:h-12 flex items-center justify-center">
-                      <p>Upgrade Now</p>
+            {/* Routes */}
+            <div className="w-full h-full flex flex-col  ">
+              <div className=" flex  flex-2 flex-col  p-4 gap-1 text-gray-500 font-medium">
+                {Routes.map((each) => {
+                  return (
+                    <div key={each.id}>
+                      <div className="flex items-center lg:pl-4 pl-2.5 rounded-[10px] hover:bg-pink-400/20 hover:text-black h-10 gap-2 cursor-pointer">
+                        <div className=" ">{each.icon}</div>
+                        <Link to={each.to} className="lg:block hidden">
+                          {each.route}
+                        </Link>
+                      </div>
                     </div>
-                  </Link>
-                </div>
+                  );
+                })}
               </div>
+              {/* Ads */}
+              <div className="w-full grid gap-4 font-medium text-gray-500/90 p-4 ">
+                <div className="relative bg-amber-500/50 lg:h-[200px] text-center p-4 rounded-[10px] lg:flex items-center hidden  ">
+                  <div className="absolute w-30 h-30 bg-pink-300 rounded-full lg:-top-15 lg:left-12 "></div>
+                  <div className="w-full grid gap-1 mt-10">
+                    <div>
+                      <h1 className="text-xl text-black lg:mb-2">
+                        Upgrade to Pro
+                      </h1>
+                      <p className="text-[11px]">
+                        Unlock Premium features & <br />
+                        enchance your LMS experience!
+                      </p>
+                    </div>
 
-              {/* SignOut */}
-              <div className="flex items-center  lg:pl-4 pl-2 rounded-[10px] bg-gray-400/20 hover:text-black h-10 gap-2">
-                <div className="">
-                  <LogOut size={20} />
+                    <Link to="">
+                      <div className="mt-4 rounded-[10px] bg-white lg:h-12 flex items-center justify-center">
+                        <p>Upgrade Now</p>
+                      </div>
+                    </Link>
+                  </div>
                 </div>
-                <div className="hidden lg:block">
-                  <p>Sign Out</p>
+
+                {/* SignOut */}
+                <div className="flex items-center  lg:pl-4 pl-2 rounded-[10px] bg-gray-400/20 hover:text-black h-10 gap-2">
+                  <div className="">
+                    <LogOut size={20} />
+                  </div>
+                  <div className="hidden lg:block">
+                    <p>Sign Out</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -238,7 +255,9 @@ export default function Layout({ children, title, user }: LayoutProps) {
           </div>
 
           {/* Body Content */}
-          <div className="">{children}</div>
+          <div className="flex-1 overflow-y-auto overflow-x-auto mx-auto w-full">
+            {children}
+          </div>
 
           {/* Footer */}
           <div className="text-xl md:flex justify-between items-center pr-4 block mt-5">
