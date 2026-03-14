@@ -1,10 +1,8 @@
-import React from "react";
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
-import { Toggle } from "../../Function";
 
 export default function LastDays() {
-  const { drop, setDrop } = Toggle();
+  const [drop, setDrop] = useState(false);
 
   const [DayToggle, setDayToggle] = useState(true);
   const [MonthToggle, setMonthToggle] = useState(false);
@@ -47,19 +45,21 @@ export default function LastDays() {
         setDrop(!drop);
       }}
     >
-      <p className="flex items-center cursor-pointer  gap-1">
+      <p className="flex items-center cursor-pointer   gap-1">
         {DayToggle
           ? "Last 7 Days"
           : MonthToggle
-          ? "Last 7 Months"
-          : Days90Toggle
-          ? "Last 90 Days"
-          : " "}
+            ? "Last 7 Months"
+            : Days90Toggle
+              ? "Last 90 Days"
+              : " "}
         <span>
           <ChevronDown className="w-[11px]" />
         </span>
       </p>
-      <div className={`${drop ? "block" : "hidden"} absolute z-9999 bg-white top-6 border border-gray-300/30 rounded-b-[10px]  w-full `}>
+      <div
+        className={`${drop ? "block" : "hidden"} absolute z-9999 bg-white top-6 border border-gray-300/30 rounded-b-[10px]  w-full `}
+      >
         {dropDowns.map((each) => {
           return (
             <div

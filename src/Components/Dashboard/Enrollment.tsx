@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import {
   Line,
@@ -30,7 +29,7 @@ export default function Enrollment() {
 
   return (
     <div className="bg-white h-[300px] rounded-2xl p-4">
-      <div className="flex justify-between">
+      <div className="flex justify-between text-xl font-bold">
         <h1>Enrollment Trends</h1>
         <div>
           <LastDays />
@@ -38,9 +37,9 @@ export default function Enrollment() {
       </div>
       <div>
         {/* Legend */}
-        <div className="flex gap-4">
+        <div className="flex gap-4 text-xl">
           <div className="flex items-center gap-1">
-            <div className="w-2 h-2 rounded-full bg-pink-300/40"></div>
+            <div className="w-2 h-2 rounded-full bg-pink-300"></div>
             <div>Students</div>
           </div>
           <div className="flex items-center gap-1">
