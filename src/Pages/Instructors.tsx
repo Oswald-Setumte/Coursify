@@ -147,17 +147,19 @@ const Instructors = () => {
         filtered={filtered}
       />
       {/* Instructors */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {filtered.map((instructor: Instructor) => (
-          <InstructorCard key={instructor.id} instructor={instructor} />
-        ))}
-      </div>
-
-      {filtered.length === 0 && (
-        <div className="text-center py-16 text-gray-400 text-sm">
-          No instructors found matching your search.
+      <div className="min-h-[70vh]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {filtered.map((instructor: Instructor) => (
+            <InstructorCard key={instructor.id} instructor={instructor} />
+          ))}
         </div>
-      )}
+
+        {filtered.length === 0 && (
+          <div className="text-center py-16 text-gray-400 text-sm h-[70vh]">
+            No instructors found matching your search.
+          </div>
+        )}
+      </div>
     </section>
   );
 };

@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 export type Instructor = {
   id: string;
   name: string;
@@ -7,11 +9,9 @@ export type Instructor = {
   phone: string;
   avatar: string;
   avatarBg: string;
-}
-
+};
 
 const InstructorCard = ({ instructor }: { instructor: Instructor }) => {
-
   const typeConfig = {
     "Full Time": {
       bg: "bg-blue-50",
@@ -41,20 +41,22 @@ const InstructorCard = ({ instructor }: { instructor: Instructor }) => {
       </span>
     );
   };
-  
-  
+
   return (
-    <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 relative group">
-      <button className="absolute top-4 right-4 text-gray-300 hover:text-gray-500 transition-colors">
+    <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 relative group h-fit">
+      <Link
+        to={`/Instructors/${instructor.id}`}
+        className="absolute top-4 right-4 text-gray-300 hover:text-gray-500 transition-colors"
+      >
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
           <circle cx="12" cy="5" r="2" />
           <circle cx="12" cy="12" r="2" />
           ``
           <circle cx="12" cy="19" r="2" />
         </svg>
-      </button>
+      </Link>
 
-      <div className="flex flex-col items-center text-center mb-4">
+      <div className="flex md:flex-col items-center mb-4 space-x-4 md:space-x-0 md:space-y-3">
         <div
           className="w-20 h-20 rounded-full overflow-hidden mb-3 ring-4 ring-white shadow-md"
           // style={{ backgroundColor: instructor.avatarBg }}
@@ -65,17 +67,19 @@ const InstructorCard = ({ instructor }: { instructor: Instructor }) => {
             className="w-full h-full object-cover"
           />
         </div>
-        <h3 className="font-bold text-gray-800 text-sm leading-tight mb-0.5">
-          {instructor.name}
-        </h3>
-        <p className="text-xs text-gray-400 mb-2 leading-tight px-2">
-          {instructor.course}
-        </p>
-        <div className="flex items-center gap-2 flex-wrap justify-center">
-          <span className="text-xs text-gray-400 font-medium bg-blue-100 px-3 py-0.5 rounded-full">
-            {instructor.id}
-          </span>
-          <Badge type={instructor.type} />
+        <div className="md:text-center">
+          <h3 className="font-bold text-gray-800 text-sm leading-tight mb-0.5">
+            {instructor.name}
+          </h3>
+          <p className="text-xs text-gray-400 mb-2 leading-tight">
+            {instructor.course}
+          </p>
+          <div className="flex items-center gap-2 flex-wrap md:justify-center">
+            <span className="text-xs text-gray-400 font-medium bg-blue-100 px-3 py-0.5 rounded-full">
+              {instructor.id}
+            </span>
+            <Badge type={instructor.type} />
+          </div>
         </div>
       </div>
 

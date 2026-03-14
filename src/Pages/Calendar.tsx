@@ -3,6 +3,7 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import StatsCard from "../Components/Calendar/StatsCard";
 import { CalendarDays, Clock, LocationEdit, X } from "lucide-react";
+import { useState, type ChangeEvent } from "react";
 
 function renderEvent(eventInfo: any) {
   const colors = {
@@ -31,7 +32,7 @@ function renderEvent(eventInfo: any) {
 }
 
 const Calendar = () => {
-  const events = [
+  const rawEventsData = [
     {
       title: "Digital Marketing Workshop",
       date: "2026-03-15",
@@ -44,8 +45,8 @@ const Calendar = () => {
       },
     },
     {
-      title: "Digital Marketing Workshop",
-      date: "2026-03-16",
+      title: "Weekly standup meeting",
+      date: "2026-03-17",
       extendedProps: {
         category: "meeting",
         time: "14:00",
@@ -53,8 +54,8 @@ const Calendar = () => {
       },
     },
     {
-      title: "Digital Marketing Workshop",
-      date: "2026-03-16",
+      title: "UI/UX Design Principles",
+      date: "2026-03-19",
       extendedProps: {
         category: "workshop",
         time: "16:00",
@@ -62,20 +63,55 @@ const Calendar = () => {
       },
     },
   ];
+  const [events] = useState(rawEventsData); // original events
+  const [filteredEvents, setFilteredEvents] = useState(events);
+  const [activeFilters, setActiveFilters] = useState<string[]>([]);
+
+  const eventTitles = Array.from(
+    new Set(rawEventsData.map((event) => event.title)),
+  );
+  const eventCategories = Array.from(
+    new Set(rawEventsData.map((event) => event.extendedProps.category)),
+  );
+
+  function handleFilterChange(event: ChangeEvent<HTMLInputElement>) {
+    const value = event.target.id;
+    const checked = event.target.checked;
+
+    setActiveFilters((prev) => {
+      const nextFilters = checked
+        ? prev.includes(value)
+          ? prev
+          : [...prev, value]
+        : prev.filter((filter) => filter !== value);
+
+      const nextEvents =
+        nextFilters.length === 0
+          ? events
+          : events.filter(
+              (e) =>
+                nextFilters.includes(e.title) ||
+                nextFilters.includes(e.extendedProps.category),
+            );
+
+      setFilteredEvents(nextEvents);
+      return nextFilters;
+    });
+  }
 
   return (
-    <section className="overflow-x-auto">
+    <section className="">
       {/* status cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-4 lg:px-4 px-15 ">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-4 lg:px-4 px-15 ">
         <StatsCard title="All Schedules" number={15} color="bg-gray-200" />
         <StatsCard title="Event Schedules" number={5} color="bg-pink-200" />
         <StatsCard title="Meeting Schedules" number={5} color="bg-yellow-200" />
         <StatsCard title="Workshop Schedules" number={5} color="bg-blue-200" />
       </div>
 
-      <main className="bg-white rounded-2xl mt-4 mx-4 flex gap-4 px-4 py-4">
+      <main className="bg-white rounded-2xl mt-4 mx-4 flex gap-4 px-4 py-4 overflow-x-auto">
         {/* filter */}
-        <div className="flex-[0.9]">
+        <div className="hidden lg:flex flex-col flex-[0.9]">
           <div className="flex items-center justify-between border-b border-gray-300">
             <h3 className="text-lg font-medium mb-2">Filter</h3>
             <button className="">
@@ -85,132 +121,54 @@ const Calendar = () => {
 
           {/* check boxes */}
           <div className="flex flex-col gap-4 mt-4 border-b border-gray-300 pb-4">
-            <div className="flex items-center gap-2">
-              <input
-                type="checkbox"
-                id="meetings"
-                className="accent-pink-400"
-              />
-              <label htmlFor="meetings" className="text-sm text-gray-500">
-                Conferences
-              </label>
-            </div>
-
-            <div className="flex items-center gap-2">
-              <input
-                type="checkbox"
-                id="meetings"
-                className="accent-pink-400"
-              />
-              <label htmlFor="meetings" className="text-sm text-gray-500">
-                Networking
-              </label>
-            </div>
-
-            <div className="flex items-center gap-2">
-              <input
-                type="checkbox"
-                id="meetings"
-                className="accent-pink-400"
-              />
-              <label htmlFor="meetings" className="text-sm text-gray-500">
-                Networking
-              </label>
-            </div>
-            <div className="flex items-center gap-2">
-              <input
-                type="checkbox"
-                id="meetings"
-                className="accent-pink-400"
-              />
-              <label htmlFor="meetings" className="text-sm text-gray-500">
-                Networking
-              </label>
-            </div>
-            <div className="flex items-center gap-2">
-              <input
-                type="checkbox"
-                id="meetings"
-                className="accent-pink-400"
-              />
-              <label htmlFor="meetings" className="text-sm text-gray-500">
-                Networking
-              </label>
-            </div>
-            <div className="flex items-center gap-2">
-              <input
-                type="checkbox"
-                id="meetings"
-                className="accent-pink-400"
-              />
-              <label htmlFor="meetings" className="text-sm text-gray-500">
-                Networking
-              </label>
-            </div>
-            <div className="flex items-center gap-2">
-              <input
-                type="checkbox"
-                id="meetings"
-                className="accent-pink-400"
-              />
-              <label htmlFor="meetings" className="text-sm text-gray-500">
-                Networking
-              </label>
-            </div>
-            <div className="flex items-center gap-2">
-              <input
-                type="checkbox"
-                id="meetings"
-                className="accent-pink-400"
-              />
-              <label htmlFor="meetings" className="text-sm text-gray-500">
-                Networking
-              </label>
-            </div>
+            {eventTitles.map((title, index) => {
+              return (
+                <div key={index} className="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    id={title}
+                    className="accent-pink-400"
+                    onChange={handleFilterChange}
+                    checked={activeFilters.includes(title)}
+                  />
+                  <label htmlFor={title} className="text-sm text-gray-500">
+                    {title}
+                  </label>
+                </div>
+              );
+            })}
           </div>
 
           {/* cateories */}
           <div className="flex flex-col gap-4 mt-4">
             <h3 className="text-lg font-medium mb-2">Category</h3>
-            <div className="flex items-center gap-2">
-              <input type="checkbox" id="event" className="accent-pink-400" />
-              <label htmlFor="event" className="text-sm text-gray-500">
-                Event
-              </label>
-            </div>
-
-            <div className="flex items-center gap-2">
-              <input
-                type="checkbox"
-                id="meeting"
-                className="accent-yellow-400"
-              />
-              <label htmlFor="meeting" className="text-sm text-gray-500">
-                Meeting
-              </label>
-            </div>
-
-            <div className="flex items-center gap-2">
-              <input
-                type="checkbox"
-                id="workshop"
-                className="accent-blue-400"
-              />
-              <label htmlFor="workshop" className="text-sm text-gray-500">
-                Workshop
-              </label>
-            </div>
+            {eventCategories.map((category, index) => {
+              return (
+                <div key={index} className="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    id={category}
+                    className="accent-pink-400"
+                    onChange={handleFilterChange}
+                    checked={activeFilters.includes(category)}
+                  />
+                  <label htmlFor={category} className="text-sm text-gray-500">
+                    {category}
+                  </label>
+                </div>
+              );
+            })}
           </div>
         </div>
 
         {/* calendar */}
-        <div className="flex-3">
+        <div className="flex-3 min-w-150">
           <FullCalendar
             plugins={[dayGridPlugin, timeGridPlugin]}
             initialView="dayGridMonth"
-            events={events}
+            events={filteredEvents.length > 0 ? filteredEvents : events}
             eventContent={renderEvent}
-            height="100%"
+            height="auto"
             headerToolbar={{
               left: "title",
               center: "prev,next",
@@ -219,7 +177,7 @@ const Calendar = () => {
           />
         </div>
         {/* shcedule details */}
-        <div className="flex-1">
+        <div className="hidden lg:flex flex-col flex-1 ">
           <div className="flex items-center justify-between">
             <h3 className="text-lg font-medium mb-2">Schedule Details</h3>
             <button className="">

@@ -1,3 +1,5 @@
+import { SlidersHorizontal } from "lucide-react";
+
 const InstructorHeader = ({
   activeFilter,
   setActiveFilter,
@@ -7,7 +9,7 @@ const InstructorHeader = ({
   const filters = ["All", "Full Time", "Part Time", "Contract"];
 
   return (
-    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+    <div className="flex flex-col-reverse sm:flex-row items-center justify-between gap-4 mb-6 ">
       {/* Filter Tabs */}
       <div className="flex items-center gap-1.5 bg-white border border-gray-100 rounded-xl shadow-sm w-fit">
         {filters.map((f) => (
@@ -27,29 +29,34 @@ const InstructorHeader = ({
 
       {/* Search + Add */}
       <div className="flex items-center gap-2">
-        <div className="relative">
-          <svg
-            className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
-            width="14"
-            height="14"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-          >
-            <circle cx="11" cy="11" r="8" />
-            <line x1="21" y1="21" x2="16.65" y2="16.65" />
-          </svg>
-          <input
-            type="text"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            placeholder="Search ID, name, course, etc."
-            className="pl-8 pr-4 py-2 text-xs bg-white border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-300 w-52 sm:w-64"
-          />
+        <div className="relative text-xs p-4 md:p-0 bg-white md:bg-none border md:border-none border-gray-200 rounded-xl flex items-center justify-between gap-4">
+          <div className="pl-8 pr-4 py-2 md:p-0 text-xs bg-gray-100 border border-gray-200 rounded-xl w-52 sm:w-64 relative">
+            <input
+              type="text"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder="Search ID, name, course, etc."
+              className="md:pl-8 md:pr-4 md:py-2 outline-none bg-transparent w-full text-xs"
+            />
+            <svg
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+          </div>
+          <button className="flex items-center md:hidden gap-2 px-3 py-2 bg-blue-200 border border-gray-200 rounded-lg font-medium text-gray-600 hover:bg-gray-50 transition-colors">
+            <SlidersHorizontal size={12} />
+          </button>
         </div>
 
-        <button className="flex items-center gap-2 px-3 py-2 bg-white border border-gray-200 rounded-xl text-xs font-medium text-gray-600 hover:bg-gray-50 transition-colors">
+        <button className="hidden md:flex items-center gap-2 px-3 py-2 bg-white border border-gray-200 rounded-xl text-xs font-medium text-gray-600 hover:bg-gray-50 transition-colors">
           <svg
             width="12"
             height="12"
@@ -65,7 +72,7 @@ const InstructorHeader = ({
           Filter
         </button>
 
-        <button className="flex items-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-semibold transition-colors shadow-sm shadow-indigo-200">
+        <button className="hidden md:flex items-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-semibold transition-colors shadow-sm shadow-indigo-200">
           <svg
             width="12"
             height="12"

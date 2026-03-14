@@ -4,6 +4,9 @@ import Layout from "./Components/Layout/Layout";
 import Dashboard from "./Pages/Dashboard";
 import Calendar from "./Pages/Calendar";
 import Instructors from "./Pages/Instructors";
+import InstructorDetails from "./Pages/InstructorDetails";
+import Students from "./Pages/Students";
+import StudentDetail from "./Pages/StudentDetail";
 
 function App() {
   const [user, setUser] = useState("Philip");
@@ -31,6 +34,31 @@ function App() {
           element={
             <Layout title="Instructors" user={user}>
               <Instructors />
+            </Layout>
+          }
+        />
+        <Route
+          path="/Instructors/:id"
+          element={
+            <Layout title="Instructors" user={user}>
+              <InstructorDetails />
+            </Layout>
+          }
+        />
+
+        <Route
+          path="/Students"
+          element={
+            <Layout title="Students" user={user}>
+              <Students />
+            </Layout>
+          }
+        />
+        <Route
+          path="/Students/:id"
+          element={
+            <Layout title="Student Detail" user={user}>
+              <StudentDetail />
             </Layout>
           }
         />

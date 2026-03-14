@@ -1,5 +1,4 @@
-import React, { ReactNode } from "react";
-import { useState } from "react";
+import type { ReactNode } from "react";
 import Logo from "../../assets/logo.png";
 import {
   LayoutGrid,
@@ -75,12 +74,12 @@ export default function Layout({ children, title, user }: LayoutProps) {
       icon: <GraduationCap size={20} />,
       to: "/Students",
     },
-    {
-      id: 8,
-      route: "Financials",
-      icon: <CircleDollarSign size={20} />,
-      to: "/Messages",
-    },
+    // {
+    //   id: 8,
+    //   route: "Financials",
+    //   icon: <CircleDollarSign size={20} />,
+    //   to: "/Messages",
+    // },
   ];
   const Conditions = [
     {
@@ -128,12 +127,12 @@ export default function Layout({ children, title, user }: LayoutProps) {
   ];
 
   return (
-    <div className="">
+    <div className="h-screen">
       {/* Body of the LayOut*/}
       <div className="flex font-medium justify-center gap-4 bg-blue-200/30 ">
         {/* SideBard */}
-        <div className="bg-white flex flex-col items-center lg:w-62.5 w-18 relative">
-          <div className="fixed">
+        <div className="bg-white md:flex flex-col items-center hidden w-62.5 relative">
+          <div className="fixed w-300px">
             {/* Logo */}
             <div className="flex items-center gap-2 p-4 w-full">
               <div>
@@ -195,9 +194,9 @@ export default function Layout({ children, title, user }: LayoutProps) {
         </div>
 
         {/* Main Content */}
-        <div className="flex-1 px">
+        <div className="flex-1 min-h-screen flex flex-col">
           {/* Navigationa Bar */}
-          <div className=" text-gray-400 flex items-center md:justify-between justify-around pt-5 pr-4 z-9999 w-full">
+          <div className="text-gray-400 flex items-center md:justify-between justify-around pt-5 pr-4 z-9999 w-full">
             {/* UserInform */}
             <div>
               <h1 className="md:text-2xl text-black/90">{title}</h1>
@@ -238,7 +237,9 @@ export default function Layout({ children, title, user }: LayoutProps) {
           </div>
 
           {/* Body Content */}
-          <div className=" mx-auto">{children}</div>
+          <div className="flex-1 overflow-y-auto overflow-x-auto mx-auto w-full">
+            {children}
+          </div>
 
           {/* Footer */}
           <div className="text-[12px] md:flex justify-between items-center pr-4 block">
